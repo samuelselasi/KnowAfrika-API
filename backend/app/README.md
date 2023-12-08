@@ -1,0 +1,2 @@
+# Endpoints For Smaller Application
+
