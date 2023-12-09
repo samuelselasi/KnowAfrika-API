@@ -14,8 +14,7 @@ from app.schedulers import scheduler
 from ..user.crud import read_user_by_id
 from app.routers.user.models import User
 from datetime import datetime, timedelta
-from app.services.email import Mail
-from app.services.email import MailSender
+from app.services.email import Mail, send_in_background
 from app.exceptions import (ExpectationFailure, NotFoundError,
                             UnAcceptableError, UnAuthorised)
 from app.static.email_templates.reset_password import reset_password_template
@@ -154,10 +153,10 @@ async def request_password_reset(payload: schemas.UserBase,
                           id='ID{}'.format(new_code.id),
                           replace_existing=True,
                           run_date=datetime.utcnow()+timedelta(minutes=RPS))
-        # await MailSender.send_in_background(self=MailSender, background_tasks=background_tasks,
-                                 # mail=Mail(email=['{}'.format(payload.email)],
-                                      # content={'code': new_code.code}),
-                                 # template=reset_password_template)
+        await send_in_background(background_tasks,
+                                 Mail(email=['{}'.format(payload.email)],
+                                      content={'code': new_code.code}),
+                                 reset_password_template)
         return True
     except NotFoundError:
         raise HTTPException(status_code=404,
@@ -198,10 +197,10 @@ async def request_password_reset_(payload: schemas.UserBase,
                           id='ID{}'.format(new_code.id),
                           replace_existing=True,
                           run_date=datetime.utcnow()+timedelta(minutes=RPS))
-        # await MailSender.send_in_background(MailSender, background_tasks=background_tasks,
-                                 # mail=Mail(email=['{}'.format(payload.email)],
-                                      # content={'code': new_code.code}),
-                                 # template=reset_password_template)
+        await send_in_background(background_tasks,
+                                 Mail(email=['{}'.format(payload.email)],
+                                      content={'code': new_code.code}),
+                                 reset_password_template)
         return True
     except NotFoundError:
         raise HTTPException(
