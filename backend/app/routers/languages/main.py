@@ -45,7 +45,7 @@ async def read_language(language_id: int, db: Session = Depends(get_db)):
     return db_language
 
 
-@router.post("/create_language/{language_id}", response_model=schemas.Language)
+@router.post("/create_language/{country_id}", response_model=schemas.Language)
 async def create_language_for_country(country_id: int,
                                       language: schemas.LanguageCreate,
                                       db: Session = Depends(get_db)):
