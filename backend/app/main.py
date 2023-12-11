@@ -10,6 +10,7 @@ from app.routers.provinces import main as provinces
 from app.routers.cities import main as cities
 from app.routers.currencies import main as currencies
 from app.routers.languages import main as languages
+from app.routers.flags import main as flags
 
 app = FastAPI(debug=True)
 
@@ -21,6 +22,7 @@ app.include_router(provinces.router, tags=["Provinces"])
 app.include_router(cities.router, tags=["Cities"])
 app.include_router(currencies.router, tags=["Currencies"])
 app.include_router(languages.router, tags=["Languages"])
+app.include_router(flags.router, tags=["Flags"])
 
 
 @app.get("/")
