@@ -34,7 +34,7 @@ async def simple_send(mail: Mail, template):
     """Function to send an email"""
 
     message = MessageSchema(
-        subject=mail.content.get('subject') or 'AfriLegal API Password Reset',
+        subject=mail.content.get('subject') or 'KnowAfrika API Team',
         recipients=mail.email,
         body=template.format(**mail.content),
         subtype="html")
@@ -46,7 +46,7 @@ async def send_in_background(background_tasks, mail: Mail, template: str):
     """Function to send an email in the background"""
 
     message = MessageSchema(
-        subject=mail.content.get('subject') or 'AfriLegal API Password Reset',
+        subject=mail.content.get('subject') or 'KnowAfrika API Team',
         recipients=mail.email,
         body=template.format(**mail.content),
         subtype="html")
