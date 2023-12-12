@@ -65,19 +65,19 @@ class Region_(RegionBase):
         from_attributes = True
 
 
-class TransportBase(BaseModel):
+class TimezoneBase(BaseModel):
     """Class that defines instance attributes"""
 
     name: str
 
 
-class TransportCreate(TransportBase):
+class TimezoneCreate(TimezoneBase):
     """Class that passes instance attributes"""
 
     pass
 
 
-class Transport(TransportBase):
+class Timezone(TimezoneBase):
     """Class that defines instance attributes"""
 
     id: int
@@ -86,4 +86,4 @@ class Transport(TransportBase):
     class Config:
         """Class that configures ORM mode"""
 
-        from_attributes = True
+        from_aTimezones = True
