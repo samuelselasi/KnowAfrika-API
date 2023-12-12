@@ -11,6 +11,7 @@ from app.routers.cities import main as cities
 from app.routers.currencies import main as currencies
 from app.routers.languages import main as languages
 from app.routers.flags import main as flags
+from app.routers.transport import main as transport
 
 app = FastAPI(debug=True)
 
@@ -23,6 +24,7 @@ app.include_router(cities.router, tags=["Cities"])
 app.include_router(currencies.router, tags=["Currencies"])
 app.include_router(languages.router, tags=["Languages"])
 app.include_router(flags.router, tags=["Flags"])
+app.include_router(transport.router, tags=["Transportation"])
 
 
 @app.get("/")
