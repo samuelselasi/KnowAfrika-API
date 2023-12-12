@@ -16,8 +16,8 @@ def get_region_by_id(db: Session, region_id: int):
 def get_region_by_name(db: Session, region_name: str):
     """Function to return region and its countries based on name"""
 
-    return db.query(models.Region).filter(models.Region.name ==
-                                          region_name).first()
+    return db.query(models.Region).filter(
+            models.Region.name.ilike(f'%{region_name}%')).first()
 
 
 def get_regions_and_countries(db: Session, skip: int = 0, limit: int = 100):
