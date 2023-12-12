@@ -50,4 +50,4 @@ class User(UserBase):
     class Config:
         """Class that configures ORM mode"""
 
-        orm_mode = True
+        from_attributes = True

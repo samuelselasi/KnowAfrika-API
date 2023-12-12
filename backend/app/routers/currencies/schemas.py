@@ -26,7 +26,7 @@ class Country(CountryBase):
     class Config:
         """Class that configures ORM mode"""
 
-        orm_mode = True
+        from_attributes = True
 
 
 class RegionBase(BaseModel):
@@ -51,7 +51,7 @@ class Region(RegionBase):
     class Config:
         """Class that configures ORM mode"""
 
-        orm_mode = True
+        from_attributes = True
 
 
 class Region_(RegionBase):
@@ -62,7 +62,7 @@ class Region_(RegionBase):
     class Config:
         """Class that configures ORM mode"""
 
-        orm_mode = True
+        from_attributes = True
 
 
 class CurrencyBase(BaseModel):
@@ -87,4 +87,4 @@ class Currency(CurrencyBase):
     class Config:
         """Class that configures ORM mode"""
 
-        orm_mode = True
+        from_attributes = True

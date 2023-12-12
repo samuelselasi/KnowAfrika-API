@@ -22,7 +22,7 @@ class AuthResponse(BaseModel):
     class Config:
         """Class to configure ORM mode"""
 
-        orm_mode = True
+        from_attributes = True
 
 
 class Token(BaseModel):
