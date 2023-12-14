@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>KnowAfrika API</title>
+    <link rel='shortcut icon' href="./images/afrilegal.jpg" />
+    <link rel="stylesheet" href="tech_doc.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>KnowAfrika API Technical Documentation</header>
+      <ul>
+        <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+        <li>
+          <a class="nav-link" href="#User_models">User Models</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Authentication">Authentication</a>
+        </li>
+        <li><a class="nav-link" href="#Regions">Regions</a></li>
+        <li><a class="nav-link" href="#Countries">Countries</a></li>
+        <li><a class="nav-link" href="#Flags">Flags</a></li>
+        <li><a class="nav-link" href="#Cities">Cities</a></li>
+        <li><a class="nav-link" href="#Provinces">Provinces</a></li>
+        <li><a class="nav-link" href="#Languages">Languages</a></li>
+        <li><a class="nav-link" href="#Currencies">Currencies</a></li>
+        <li><a class="nav-link" href="#Timezones">Timezones</a></li>
+        <li><a class="nav-link" href="#Transport">Transport</a></li>
+        <li><a class="nav-link" href="#Reference">Reference</a></li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <article>
+          <p>
+            This comprehensive documentation serves as a detailed guide for
+            utilizing the KnowAfrika API. Users can gain valuable insights into
+            the functionalities and expectations associated with the available
+            endpoints, providing a clear understanding of how to leverage the 
+            API effectively.
+          </p>
+
+          <p>
+	    The base URL for accessing the API is:
+          </p>
+          <ul>
+            <li>
+            http://127.0.0.1:8000/
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="User_models">
+        <header>User Models</header>
+        <article>
+          <p>
+	    This is the first step towards accessing endpoints with authentication.
+	    The endpoints in this router makes it possible to create, read, update
+	    and delete a user. The following snippets show how to access these endpoints:
+	  </p>
+
+          <ul>
+            <li>
+		    <strong>Create User</strong>
+		    <code>
+			    curl -X POST -H "Content-Type: application/json" -d '{ "email": "user@example.com", "password": "string", "user_type_id": 1, "status": true }' http://100.26.231.45:89/create_user
+		    </code>
+	    </li>
+	    <li>
+                    <strong>Read All Users</strong>
+                    <code>
+                            curl http://100.26.231.45:89/get_users
+                    </code>
+            </li>
+	    <li>
+                    <strong>Update User</strong>
+                    <code>
+			    curl -X PATCH -H "Content-Type: application/json" -d '{ "first_name": "string", "middle_name": "string", "last_name": "string"}' http://100.26.231.45:89/update/{id}
+                    </code>
+            </li>
+	    <li>
+                    <strong>Delete User</strong>
+                    <code>
+                            curl http://100.26.231.45:89/delete/1
+                    </code>
+            </li>
+          </ul>
+
+        </article>
+      </section>
+      <section class="main-section" id="Authentication">
+        <header>Authentication</header>
+        <article>
+          <p>
+            This endpoint handles the login mechanism of the API.
+	    Also available is the logout option where the access
+	    token generated will be blacklisted and refresh token
+	    to regenerate token to be kept logged in. The following
+	    show how to access the authentication endpoints:
+          </p>
+	  <ul>
+            <li>
+                    <strong>Login</strong>
+                    <code>
+                            curl -X POST -H "Content-Type: application/json" -d '{ "email": "user@example.com", "password": "string" }' http://100.26.231.45:89/login
+                    </code>
+            </li>
+            <li>
+                    <strong>Logout</strong>
+                    <code>
+                            curl -X POST -H "Content-Type: application/json" -d '{ "access_token": "string", "refresh_token": "string" }' http://100.26.231.45:89/logout
+                    </code>
+            </li>
+            <li>
+                    <strong>Refresh</strong>
+                    <code>
+                            curl -X POST -H "Content-Type: application/json" -d '{ "access_token": "string", "refresh_token": "string" }' http://100.26.231.45:89/refresh
+                    </code>
+            </li>
+            <li>
+                    <strong>Password Reset</strong>
+                    <code>
+                            curl -X POST -H "Content-Type: application/json" -d '{ "email": "email" }' http://100.26.231.45:89/request
+                    </code>
+            </li>
+          </ul>
+
+        </article>
+      </section>
+      <section class="main-section" id="Regions">
+        <header>Regions</header>
+	<p>
+            This endpoint handles the various regions in Africa.
+            The endpoints are developed for users to view the
+	    various region information based on id or by name.
+            The following are ways
+	    to utilize the endpoints for Regions:
+          </p>
+          <ul>
+            <li>
+                    <strong>Get Regions</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_regions?skip=0&limit=100' \
+                        -H 'accept: application/json'
+                    </code>
+            </li>
+            <li>
+                <strong>Get Regions by Countries</strong>
+                <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_regions_countries?skip=0&limit=100' \
+                        -H 'accept: application/json'                     
+                </code>
+            </li>
+            <li>
+                    <strong>Get Region By ID</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_region_by_id/{id}' \
+                        -H 'accept: application/json'    
+                    </code>
+            </li>
+            <li>
+                    <strong>Get Region By Name</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_region_by_name/region_name?region_name=North' \
+                        -H 'accept: application/json'      
+                    </code>
+            </li>
+          </ul>
+      </section>
+      <section class="main-section" id="Countries">
+        <header>Countries</header>
+	<p>
+            This endpoint handles the various countries in Africa.
+            The endpoints are developed for users to view the
+	    various country information based on id or by name.
+            The following are ways
+	    to utilize the endpoints for Regions:
+          </p>
+          <ul>
+            <li>
+                    <strong>Get Countries</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_countries?skip=0&limit=100' \
+                        -H 'accept: application/json'                    
+                    </code>
+            </li>
+            <li>
+                    <strong>Get Country By ID</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_country/{id}' \
+                        -H 'accept: application/json'                     
+                    </code>
+            </li>
+          </ul>
+      </section>
+      <section class="main-section" id="Flags">
+        <header>Flags</header>
+	<p>
+            This endpoint handles the various flags in Africa.
+            The endpoints are developed for users to view the
+	    various flag based on id or by country name.
+            The following are ways
+	    to utilize the endpoints for Flags:
+          </p>
+          <ul>
+            <li>
+                    <strong>Get Flags</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_flag/1' \
+                        -H 'accept: application/json'
+                    </code>
+            </li>
+            <li>
+                    <strong>Get Flag By ID</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/flag/{id}' \
+                        -H 'accept: application/json'                       
+                    </code>
+            </li>
+          </ul>
+      </section>
+      <section class="main-section" id="Cities">
+        <header>Cities</header>
+	<p>
+            This endpoint handles the various cities of the countries in Africa.
+            The endpoints are developed for users to view the
+	    various city information based on id or by name.
+            The following are ways
+	    to utilize the endpoints for Cities:
+          </p>
+          <ul>
+            <li>
+                    <strong>Get Cities by Country</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_cities_country?country_id=1&skip=0&limit=100' \
+                        -H 'accept: application/json'                      
+                    </code>
+            </li>
+            <li>
+                   <strong>Get Cities by Province</strong>
+                   <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_cities_province?country_id=1&province_id=1&skip=0&limit=100' \
+                        -H 'accept: application/json'                                            
+                </code>
+            </li>
+            <li>
+                    <strong>Get City By ID</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_city/{id}' \
+                        -H 'accept: application/json'                      
+                    </code>
+            </li>
+          </ul>
+      </section>
+      <section class="main-section" id="Provinces">
+        <header>Provinces</header>
+	<p>
+            This endpoint handles the various provinces in the African countries.
+            The endpoints are developed for users to view the
+	    various province information based on id or by name.
+            The following are ways
+	    to utilize the endpoints for Provinces:
+          </p>
+          <ul>
+            <li>
+                    <strong>Get Provinces</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_provinces?country_id=8&skip=0&limit=100' \
+                        -H 'accept: application/json'        
+                    </code>
+            </li>
+            <li>
+                    <strong>Get Province By ID</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/province/{id}' \
+                        -H 'accept: application/json'                      
+                    </code>
+            </li>
+          </ul>
+      </section>
+      <section class="main-section" id="Languages">
+        <header>Languages</header>
+	<p>
+            This endpoint handles the various languages in African countries.
+            The endpoints are developed for users to view the
+	    various language information based on id or by name or by country.
+            The following are ways
+	    to utilize the endpoints for Languages:
+          </p>
+          <ul>
+            <li>
+                    <strong>Get Languages</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_languages?country_id=1&skip=0&limit=100' \
+                        -H 'accept: application/json'                      
+                    </code>
+            </li>
+            <li>
+                    <strong>Get Language By ID</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/language/{id}' \
+                        -H 'accept: application/json'
+                    </code>
+            </li>
+          </ul>
+      </section>
+      <section class="main-section" id="Currencies">
+        <header>Currencies</header>
+	<p>
+            This endpoint handles the various currencies of the African countries.
+            The endpoints are developed for users to view the
+	    various currency information based on id or by name or by country.
+            The following are ways
+	    to utilize the endpoints for Currencies:
+          </p>
+          <ul>
+            <li>
+                    <strong>Get Currencies</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_currencies?country_id=1&skip=0&limit=100' \
+                        -H 'accept: application/json'                       
+                    </code>
+            </li>
+            <li>
+                    <strong>Get Currency By ID</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/currency/{id}' \
+                        -H 'accept: application/json'
+                    </code>
+            </li>
+          </ul>
+      </section>
+      <section class="main-section" id="Timezones">
+        <header>Timezones</header>
+	<p>
+            This endpoint handles the various timezones for the African countries.
+            The endpoints are developed for users to view the
+	    various timezone information based on id or by country.
+            The following are ways
+	    to utilize the endpoints for Timezones:
+          </p>
+          <ul>
+            <li>
+                    <strong>Get Timezones</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_timezones?country_id=1&skip=0&limit=100' \
+                        -H 'accept: application/json'
+                    </code>
+            </li>
+            <li>
+                    <strong>Get Timezone By ID</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/timezone/{id}' \
+                        -H 'accept: application/json'
+                    </code>
+            </li>
+          </ul>
+      </section>
+      <section class="main-section" id="Transport">
+        <header>Transport</header>
+	<p>
+            This endpoint handles the various transport systems of countries in Africa.
+            The endpoints are developed for users to view the
+	    various transport information based on id or by country.
+            The following are ways
+	    to utilize the endpoints for Transport:
+          </p>
+          <ul>
+            <li>
+                    <strong>Get Transportation</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/get_modes_of_transport?country_id=1&skip=0&limit=100' \
+                        -H 'accept: application/json'
+                    </code>
+            </li>
+            <li>
+                    <strong>Get Transportation By ID</strong>
+                    <code>
+                        curl -X 'GET' \
+                        'http://127.0.0.1:8000/transport/{id}' \
+                        -H 'accept: application/json'
+                    </code>
+            </li>
+          </ul>
+      </section>
+      <section class="main-section" id="Reference">
+        <header>Reference</header>
+        <article>
+          <ul>
+            <li>
+              All the documentation in this page is taken from
+              <a
+                href="http://127.0.0.1:8000/docs"
+                target="_blank"
+                >Swagger Docs</a
+              >
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
