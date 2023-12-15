@@ -79,7 +79,7 @@ body {
 h1,
 h2 {
   font-family: 'Raleway', sans-serif;
-  font-weight: 900;
+  font-weight: 1500;
   text-align: center;
 }
 
@@ -90,8 +90,8 @@ h4 {
 }
 
 h1 {
-  font-size: 14rem;
-  margin-top: -200px;
+  font-size: 14.2rem;
+  margin-top: -70px;
   color: hsla(39,100%,68%,1);
   position: absolute;
 }
@@ -177,10 +177,11 @@ height: auto;
 
 .welcome-section > p {
   font-size: 3rem;
-  font-weight: 2000;
+  font-weight: 2800;
   font-style: bold;
   color: #8BC34A;
   position: absolute;
+  margin-top: 148px;
 }
 
 /* Projects section */
@@ -190,6 +191,7 @@ height: auto;
   padding: 10rem 2rem;
   background-color: #000;
   background-image: linear-gradient(124deg, #000000 0%, #303841 100%);
+  position: relative;
 }
 
 .projects-section-header {
