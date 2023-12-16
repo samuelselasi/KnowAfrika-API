@@ -1,6 +1,7 @@
 # KnowAfrika API
 ***Accessible API to know Africa***
 
+![knowafrika_113603](https://github.com/samuelselasi/KnowAfrika-API/assets/85158665/c996a1d4-dea7-45e3-9068-7974aeb065e3)
 
 ## Content
 
