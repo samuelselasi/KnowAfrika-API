@@ -1,0 +1,513 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 16.1 (Ubuntu 16.1-1.pgdg22.04+1)
+-- Dumped by pg_dump version 16.1 (Ubuntu 16.1-1.pgdg22.04+1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Data for Name: regions; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.regions (id, name, is_active) FROM stdin;
+1	North	t
+2	South	t
+3	West	t
+4	East	t
+5	Central	t
+\.
+
+
+--
+-- Data for Name: countries; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.countries (id, name, region_id) FROM stdin;
+1	Algeria	1
+2	Egypt	1
+3	Libya	1
+4	Mauritania	1
+5	Morocco	1
+6	Sahrawi Arab Democratic Republic	1
+7	Tunisia	1
+8	Angola	2
+9	Botswana	2
+10	Lesotho	2
+11	Malawi	2
+12	Mozambique	2
+13	Namibia	2
+14	South Africa	2
+15	Swaziland	2
+16	Zambia	2
+17	Zimbabwe	2
+18	Benin	3
+19	Burkina Faso	3
+20	Cabo Verde	3
+21	Côte d'Ivoire	3
+22	Gambia	3
+23	Ghana	3
+24	Guinea-Bissau	3
+25	Guinea	3
+26	Liberia	3
+27	Mali	3
+28	Niger	3
+29	Nigeria	3
+30	Senegal	3
+31	Sierra Leone	3
+32	Togo	3
+33	Comoros	4
+34	Djibouti	4
+35	Ethiopia	4
+36	Eritrea	4
+37	Kenya	4
+38	Madagascar	4
+39	Mauritius	4
+40	Rwanda	4
+41	Seychelles	4
+42	Somalia	4
+43	South Sudan	4
+44	Sudan	4
+45	Tanzania	4
+46	Uganda	4
+47	Burundi	5
+48	Cameroon	5
+49	Central African Republic	5
+50	Chad	5
+51	Congo	5
+52	Democratic Republic of Congo	5
+53	Equatorial Guinea	5
+54	Gabon	5
+55	São Tomé and Príncipe	5
+57	Test	1
+\.
+
+
+--
+-- Data for Name: provinces; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.provinces (id, name, country_id) FROM stdin;
+1	Adrar	1
+2	Chlef	1
+3	Laghouat	1
+4	Oum El Bouaghi	1
+5	Batna	1
+6	Béjaïa	1
+7	Biskra	1
+8	Béchar	1
+9	Blida	1
+10	Bouïra	1
+11	Tamanrasset	1
+12	Tébessa	1
+13	Tlemcen	1
+14	Tiaret	1
+15	Tizi Ouzou	1
+16	Algiers	1
+17	Djelfa	1
+18	Jijel	1
+19	Sétif	1
+20	Saïda	1
+21	Skikda	1
+22	Sidi Bel Abbès	1
+23	Annaba	1
+24	Guelma	1
+25	Constantine	1
+26	Médéa	1
+27	Mostaganem	1
+28	M'Sila	1
+29	Mascara	1
+30	Ouargla	1
+31	Oran	1
+32	El Bayadh	1
+33	Illizi	1
+34	Bordj Bou Arréridj	1
+35	Boumerdès	1
+36	El Tarf	1
+37	Tindouf	1
+38	Tissemsilt	1
+39	El Oued	1
+40	Khenchela	1
+41	Souk Ahras	1
+42	Tipaza	1
+43	Mila	1
+44	Aïn Defla	1
+45	Naâma	1
+46	Aïn Témouchent	1
+47	Ghardaïa	1
+48	Relizane	1
+49	Timimoun	1
+50	Bordj Badji Mokhtar	1
+51	Ouled Djellal	1
+52	Béni Abbès	1
+53	Ain Salah	1
+54	Ain Guezzam	1
+55	Touggourt	1
+56	Djanet	1
+57	El M'Ghair	1
+58	El Menia	1
+60	Alexandria	2
+61	Aswan	2
+62	Asyut	2
+63	Beheira	2
+64	Beni Suef	2
+65	Cairo	2
+66	Dakahlia	2
+67	Damietta	2
+68	Faiyum	2
+69	Gharbia	2
+70	Giza	2
+71	Ismailia	2
+72	Kafr El Sheikh	2
+73	Luxor	2
+74	Matrouh	2
+75	Minya	2
+76	Monufia	2
+77	New Valley	2
+78	North Sinai	2
+79	Port Said[	2
+80	Qalyubia	2
+81	Qena	2
+82	Red Sea	2
+83	Sharqia	2
+84	Sohag	2
+85	South Sinai	2
+86	Suez	2
+87	Tripolitania	3
+88	Cyrenaica	3
+89	Fezzan	3
+90	Nouakchott	4
+91	Hodh Ech Chargui	4
+92	Hodh El Gharbi	4
+93	Assaba	4
+94	Gorgol	4
+95	Brakna	4
+96	Trarza	4
+97	Adrar	4
+98	Dakhlet Nouadhibou	4
+99	Tagant	4
+100	Guidimaka	4
+101	Tanger-Tetouan-Al Hoceima	5
+102	Oriental	5
+103	Fes-Meknes	5
+104	Rabat-Sale-Kenitra	5
+105	Beni Mellal-Khenifra	5
+106	Casablanca-Settat	5
+107	Marrakech-Safi	5
+108	Draa-Tafilalet	5
+109	Souss-Massa	5
+110	Guelmim-Oued Noun	5
+111	Laayoune-Sakia El Hamra	5
+112	Dakhla-Oued Ed-Dahab	5
+113	Western Sahara	6
+114	Tunis	7
+115	Ariana	7
+116	Ben Arous	7
+117	Manouba	7
+118	Nabeul	7
+119	Zaghouan	7
+120	Bizerte	7
+121	Béja	7
+122	Jendouba	7
+123	Kef	7
+124	Siliana	7
+125	Sousse	7
+126	Monastir	7
+127	Mahdia	7
+128	Sfax	7
+129	Kairouan	7
+130	Kasserine	7
+131	Sidi Bouzid	7
+132	Gabès	7
+133	Medenine	7
+134	Tataouine	7
+135	Bengo	8
+136	Benguela	8
+137	Bié	8
+138	Cabinda	8
+139	Cuando Cubango	8
+140	Cuanza Norte	8
+141	Cuanza Sul	8
+142	Cunene	8
+143	Huambo	8
+144	Huíla	8
+145	Luanda	8
+146	Lunda Norte	8
+147	Lunda Sul	8
+148	Malanje	8
+149	Moxico	8
+150	Namibe	8
+151	Uíge	8
+152	Zaire	8
+\.
+
+
+--
+-- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.cities (id, country_id, province_id, name) FROM stdin;
+1	1	1	Adrar
+2	1	1	Tamest
+3	1	1	Reggane
+4	1	1	In Zghmir
+5	1	1	Tit
+6	1	1	Tsabit
+7	1	1	Zaouiet Kounta
+8	1	1	Aoulef
+9	1	1	Timokten
+10	1	1	Tamentit
+11	1	1	Fenoughil
+12	1	1	Sali
+13	1	1	Akabli
+14	1	1	Ouled Ahmed Timmi
+15	1	1	Bouda
+16	1	1	Bordj Badji Mokhtar
+17	1	1	Sebaa
+18	1	1	Timiaouine
+\.
+
+
+--
+-- Data for Name: currencies; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.currencies (id, name, symbol, country_id) FROM stdin;
+1	Algerian Dinar	DA	1
+2	Egyptian Pound	E£	2
+3	Libyan Dinar	LD	3
+\.
+
+
+--
+-- Data for Name: flags; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.flags (id, title, content, country_id) FROM stdin;
+1	Algeria	\\x89504e470d0a1a0a0000000d49484452000000ff000000aa0802000000ed290ed90000000467414d410000b18f0bfc6105000000206348524d00007a26000080840000fa00000080e8000075300000ea6000003a98000017709cba513c00000006624b474400ff00ff00ffa0bda79300000e174944415478daed9d697414551a86bfdbd5fb9e7d4f08011259029a843840104220c8a62223222e281016674471948101017558c5914510c511141d3c22ee1c1c4754020202b2881082094b2721a4d39da49374d2e9a5e60773c495a4abaad3e1ccfbfccac939b7faf6fd9eaefaee52f7322ac8201024168e2a5834ba00ed102c64680200fb0180fd00c07e00603f00b01f00d80f00ec0700f60300fb0180fd00c07e00603f00b01f00d80f00ec0700f60300fb0180fd00c07e00603f00b01f00d80f00ec0700f60300fb0180fd00c07e00603f00b01f00d80f00ec0700f603d80f00ec0700f60300fb0180fd00c07e00603f00b01f80eb18399aa0ddd07829a181e21ac8e0269d87746e96e63b6a2dd9c2d42a4ea791478529e2a315d1115ca8096dd53e302ac8402b0408bd9bd26dd4db46bd6dac5b2d8537b7ed861419aae995aae99da6c9eaa5cfc990e9b46849d87fdd10eba4c1e534a88232ad8cf3890b8f52a1cdee6dc8eb671e97af888d44dbc2fe0e8ac24743cae9ae1f58a635101d34997e6066c8dd234db7e7319512ad0dfb3b5086735f311b5f42a1cd01ff2c795478f8f4bb431fba9333ead1f2b03f98e83c34b198ee2f66c69676fd5c994117f1e803e133ef91a95588826038ca88452b0823dfc2d615b2c1154ce56def8fe65bdc8d7b0ed5bebd531e15a6eede05b180fded475c23ad3840938b98ce13cc6af81c0d8e0f77377d7b4a9793c1e975880bec0f38c32fb217f7b22e0ed641ead3526aa979f323457c141e02c8fb0388ca4b738fb2b1a552c740cea97b74d566f454a5252b3b27281363389381331a985a4944be46a7c756e7b95cedb654361795361795380f1ef754d97f7d9db0c9e36296cc664a052205fb2526c4456b0b59ba5db20bdad5e4b8396dd0f4025d4ea64cabf1abacabf85cfdee838e0f77371e3c4ebeab730aba9bfb246e59268f0c43bc60bf6424d5d3fa4296d02045b2ce686f34ede8cc7f1543f3c7142c1a5d20e66aee4a6bcdeb1fd837ef705ffadf2c83b2535cf2fbeb954948685b07abdc5a27c541afef96407d1fa38f93f83b86f37fcae177c791578ab6574447443e3925f5c447f1eb172a93e389a8e57c79e9ad535cc5e71038d82f96e47adaf4250b7189bdcefe681a3b9c9f974de70c017882cbb99009a3ba1d7c27f6b9399cd9e8be642d1d39cd75f63cc207fb8513d7489bbe6061e26670ed6a9add8fa60de44b0d81ad2d53c8c3268feb7668bb79fc084f75cdb93b1f71575a1144d82f049d87d6ec6511e2d4ff2a861f3b8cff4f3cdf6ed596878724bcb438f19f4b7d8e86f3e366791d0d0825ecf7b35d785a7a8075ad1395e5afebc93f9243767510ea6fba23afcb575bc9e72b9bbe90781e0185fd7e30e5340daa105edcc5d1ec7efccbdd2988de299362533e7d95777bac6bb722a0b0bfadf4b2d18c53c2a7729d727a3887df1dd701a26bd025bdb5aaf97891f39b13082bec6f1dad87961e14fe568a8ba31903f96f3acc8b284c218fdff874fd675ff3cd2d082eec6f85e9df53a2d08ea28fd1dc6c3a1adeb1be119373914f4e711e3989e0c2fe6b915c4f13cf0acf7956f6a1f61cdef1eb09a0e993c6bb3d08f14fc19e0e3f63ce51a6109af37c9ac0bfd93538d5e63d5e26e75ab9cfe1ed78dcfbaf415615f5ab1458b65c478bb28253ed862fbf711e3886f0c17e514c133acec3133d9dc13706e339eaa9aeb14c5fc8fb7c081fec174e1f1bf5ad1258f6fd64da1f1d948c872f9bb9d873b91ae183fda298582cb0a0534eeb7a05a7a75bbde15ff59fed43ec60bf28cc2e1a5c2130ed79bd1b6f0dc65a86a613672a9f7e11b183fd621975812905edcbd0c4d15bc118e7f1399b2c53e6f32e4c60c17ed18cb828b0e08ece541b8c0d752ae63c87e5fbb05f02229aa987d0b775b7751195f16b6d0dcd457ebf245fbbe3df355b3f44e0c483d92ebaa59c094bf9bf0ba30be25e58690ad5553cb1c25d5669c8cf31dd3e4497dd9b5aab8bbbacb2e2f1e5881aeefdd2d0bf52e0fd7b67a2d8a11e9eb1840d8bbcb5f5b68ddb4a6f9d7ae6a63b2a17ae711e3ef97b2bf2798ff7e283f3bcb50e440df64b43ba4de068cf9e18093e5d111f1dbf66fe95bf5bce975bd7bc5132f4c1a29ea3ca1f5be2d855c87b7ed619af5abad179f83b840cf64b43ac9384bdbb78c14016893651368e1e1c3ae98e9fa5371555f6cdef5d9830fb746abe65fa42c7ae42deed69dcf7ad75f516288bbc5f32ba0bedef1e8990b21a314b6637ee3fe63af3cb6d48bcf6badab777d6bebdf3ca7146bc172b1a70ef978e14a129f4a91029e777651a75e2e665d7d88edc6baff3daebe02bec9734f3691498f49f364b5c13755ae7e86766c148d8df7ec4350a2c5816809353c2268f338eb8454041ebaad76ab67d82b120e4fdfe11d524a454331798295ec6e2d72e387bf4d48f9b72b691863d871af61c624a853e27d33826d73872903ccc0cb971ef6f05ad5b4829ab26505b9570a1a684979f619c90b8f02deefacff797cffa7b516afeb9db66da36bd83bddc60ffb5d0085ddc1638740332221e7b50cc1578afaf61cfa18a275614f518f5c3e0fb2f2f7bd9556281ebb0ff577d4d41f6bb029c3046ce99aaed9b2ec1857cbea663a7ab96bf529c75e70fb9f75b5fd8d2528a9f01eceff830494f46e2799fb3d9d7ece2bd5e342d7abd57fbaf7aff67905401de19a46af92bce83c7a5b8b9c934e9a986fc01e63fdeaa4a4980eeb0ff9719bcdeff8eaf369037d0c6bd47acff784dd4638393e9fa6718470f368e1aa4888e80e5b0ffb7712a88fc5fe713de448c0232ece3b5d7590a16085bd180114fd8ef1f955a3ea9deef0c5bed25b38b6a241ff2e7f9b23f3fe3ef603f11e9076699278c340ecfe1cc46380dfbdb4ab94e60e732a1517afb6daf6e77ecfc4a40c188c71fd40fcc82cd7e778bfecfbfff25adc0fc25ad46eafe775169e582d53012f6b71f25423385ee35528e48fa9a9a2f4efaabaff9770fc7e3424d57163903643e9271325460c14cab949dde4bf39efff5e2fe2bd21b86f637dd9e6718f207e73727cedd36034bfc61bf84bd5eb2aa85bcde9558cf121a78495eef727cf4857df37b3ffd8f2236d230acbf213fc790d7efc7cd9975fd6f8a98f540d5f3afc15ad82f1927c2f821e542d298819748fc96e5eeb2cab2479ebdf2b7b2539c694cae7174ae36a3c76fcef546ce9dd6b0e7305eed85fd9251184343ca85141c7991bdd95554fec378de326311673698c78f68cb8e264cce25beb6e46cce442ce587fd12d91f4b3c91809b7f4f1b7572d0791123ec1a7b63ecca27d5699ddb5e44111f1dbb6a8e65f2df1038f160951b59d5f4bdd0beefdd25a2467e9c617abfd4bf8279ecb0907bc72070b05f1a3e491258706c29995d41a870ecf2bfa8ba7642e060bf047c9cc4bb04b584da2bea943be161d36a12363dcb544ac40ef68ba54e495f083d5c7ad2198a7606a1ce9af4d4e8a71e46ec60bf046c4d15387aa3f2d2c3413a09377cc604c3d0fe881dec17cb89503a1025b0ec98f34cf0618fa2602c7efd42795438c207fbc5b2b1bb5009899e3a42ba601c052d0f0f4978693193218eb05f1c4722f87dd102f39fd846b6f8100b4ab5f583fa6a6fee83f0c17eb12cbb91dc429b649885ee2b0e4eb55b3da89d887c8d4edeed418861ffef72c1405bbb092ffef8719657d611bf17dfe26e3a56c41498da87fdd7e4a51ebce0f388643c2d3dc832acac63a9eff654add8a4cdec89e0c2fe5668e2686e36ef11da302a2faddf43d99759c751df32fd2943fe004c8dc1fe3671329436f410be7853e3a57585945716fc1f80d7d17061c26ced4d3db459bd1056d8df565e4da3dd71c28bab7cb4ea6b9a7e8a05f117d072aeac64e8434cad0a9f790f020afbfdc0c7685e367fc62cfc09c088669ea475852cbc3908f5afddbeebec2df732952261c322620c0185fdfee194d32303e8b246d445722ed1bb9fb27c4bfbf9e7a9b25ba62eb04c5d200f3525bfb35a66d02194b05f0897b43465106f558bba48888b56eea74d5fb29400bf8fc5b7b86d1bb715f71d57bb7d973c22b4d3f6b5580401fb4571c1405307f336b5d8ebf4ada2773f65cb0eb014070b84f7356f7c509c7567c55f5779ebea15b1919d3f7959d52511e1bb3698fe689d52033d90cbaf2fa4c47a51e2ca781a7191865be8eb28f66e0a7d1923c19e28eef2cbf62defdbb7bce7a9b25df98fb27342f27b2f2a13631038d82f0d17f5746f2eadde4737568b7edaf234a0920654925dcdeaac7b1cf234fdc04c994eebcfad9e77159fafff7c7fdd079f3b0f9f24dfd51d7e74fd6e4cdcbc4c1e118a90b56d64a22003add046545e7ae218bbab44ea187032d50d29daac74756a27654aa232214666d27366a34cadbab238c763abf3da6a5a2c975ca74a9a4f97380f7de7a9fe8d8d14c30ac6c73cfb289633c0fe0032d4428b0e3383bb0355890b35c5ad9c631a3b14d1f1afdd282316ade05f37c044bb9228b19e25357488fa1887e7246f5f83653cb0bf9da857d0ce243a6b627daa491fbc55c3caa4d8b817e645cd9fe15fb70120f391048d972614d3a462d6cefb9a706663c46393c2a78dc7da35d81f64741e9a584c77ffd01e8b1a143111e133ef099d3456a6c7fd1ef67718e43eca2da7bb4a585615493ea1c538997e50b679fc08d36d43985281d686fd1d9468270daea0dc72cab4324edc6efb4ca5d4f5bbd190d7cf3476284e5f84fdd7137a37a5db28ddced2aba95b1d1fd9d4a64782223652939eaa4e4fd566f5d2f5bf49a651a32561ff758fca4bf18d14dfc0f41ed2ba79430be5dd909d77435fce6c640ab93c3a5c191fad888b4242df7ec92a9aa0dd70715462a412e3d5e53d09a37a4f18fd005a2658608d2780fd00c07e00603f00b01f00d80f00ec0700f60300fb0180fd00c07e00603f00b01f00d80f00ec0700f60300fb0180fd00c07e00603f00b01f00d80f00ec0700f60300fb0180fd00c07e00603f00b01f00d80f00ec0700f60300fb01ec0700f60300fb0180fd00c07e00603f00b01f00d80fc0f5cc7f01477a596b14d8a40a0000002574455874646174653a63726561746500323032332d31302d33305430323a35353a34322b30303a3030e7ee66ee0000002574455874646174653a6d6f6469667900323032332d31302d33305430323a35353a34322b30303a303096b3de520000000049454e44ae426082	1
+2	Egypt	\\x89504e470d0a1a0a0000000d49484452000000ff000000aa0802000000ed290ed90000000467414d410000b18f0bfc6105000000206348524d00007a26000080840000fa00000080e8000075300000ea6000003a98000017709cba513c00000006624b474400ff00ff00ffa0bda7930000107a4944415478daeddd7b705cd57d07f0df7dedddbd77dfabf7d392250b59c6c6b8368f42780ed40c0f3705da0e34099026d3cca49366a04987a129a533349d4ec234430be990782034af024348ea408331c431c4066183906559b22c59abd54aab7ddfddfb3af7f68fab15b2a1899bb8b0c1dfcf1f9e5dcffa7ae6ccf79cfb3b8fbdcb0dc7d611c05989471300d20f80f40320fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483f20fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483f00d20f80f40320fd00483fc01924466fbc16ad006727ce755db4029ca5633f9ae0835448ee991bf937d7313951d1d2c352b02d10ec681ef844a4f32a340ed2ff1157ce1c54139ba4406369e175535f9482adf9d4be727ebc7171b8f3fc7bd03e48ff4719b334a3329f3ef244bcfbbacd37ef2ba4f6b60cde4944f3633bd138a8fbcf8efa6776f7c42b5f5877e537432d177a7fb334f55cb4e30a410aa2713e4858f1fc10443aaeecd872f74af489c8a7b69895345a06e93f3beeb9bcefa4b79c482e43b3a0ee3f1baaffb220aae5c5616669a23f2e2badbc203b4c47cba0eeffe8cbcfbe1488f615e6f6baae4dc411b9d1b6cb8cf26cb8f562340e2a9f8f38439b65662910ed27e2966fc1fe84a567d032a87c7e5715e75fab1626969bd51789776fe7f8f7695e97991c2f953307c32d17cb6a9ba1cd91eb0a92caacf2fb5ed675ececf47fd966d17bab44d7859ab7a1b591fe3a524aef7798d13c70bbf7d6aa2ea48f3cc10b7243ef1ff26260f52733c79f8b77fdc1d2d4b3d5c2841a1f32b4397f788d5e3c4eef29411dbb9a39f68cc38cc49aeba540e372d594dc535a38106ada8a3647faeb85961d6d19fc94c3745ef0139114686a19bc8359dac2d1ef73bc98e8be4ef4c789c83672e432c7ae88fe06534bc63aaf26a250f3b6cce433be60bb519a91435d4464e94bd9e95de4b286b5370b92fa6e7f607ab4fdf2f9c33b917ea4bf9e4af972f2e0539736f4ee501b36799926224152bd2e919bf96fdb2c10b95a66a461edc767861fecde72efdcc8a34454cd1f752ccd61864f699d1bf957253e44c48972b4b1ef165e9057ff17b9133f2b670e2e4dfd28d68963b9487f3d498fedac16269a066e1bdffde944ef4d7d973eb432a3e5057fa2e70622aae6c799a5f1828f5cae30ff6ad3c0edc77ff995d6a14fe7665f7258b5923bec0ff726d6dc20cad1f716ffc7f7df9f1e7bbc73f3dd85b99f9b95f9eeadf7a2cd91fe3ae13acc2422415498a5250ffd4bcbe09d6a6c90134edad20a44d705a2ebc875bab77d45f2278828dc72a1acb637f6ddfcab2ecd4c2d373abdff7e29d0e855412e3388dc95de05bf31ac789e018eadbb8e49447c6de9461095b77e748d519a799f4f73bc284773b32fa647bf65194bf3a38f15527b89de7fd7c5d4e6467e72232f048888591a2f2a44e43896c30c343bc6febac06ccdf1d25fdbb2e525a538ffdae4bebfeebde84129d0284841d7654679b69c39e832c3360a72b83bb666bb4f69352be97266787ef4db822fc48b4ab0f13c596d23e29855b6aa8bc7f67d399f7cd91bf21dbbea2d1f39cc6496e64daf01e9ffb0d36f69a70cc63cef7398c10bf2e2e453d3fbef6fddf0198e9738de478e5dc98d5966eebc1d2f799ff429cdf1aeedc33fdce60ff52ab1fe62fa359759ae6ba5461eeddef6775e77aa4d7f97ef0faead3b9646fe045a1ee9af83cac7d25cbb4a44abd6ec5d221244955965ef54cff48107563eafc4d79f7205bd385d4a1f5879dbb5f53e66698ea5f19272f224c02522c7d199ada1d951f7d705cbccb9aeb3127a4ef07993605e521cbb42441cfd1f0f53b92e1131bb22880a11b98ec5f1d2caf55d87d9461ecd8ef4d705bb9aad0df8ef0ef92b4b4044c48921d1173edddbb11c137d91d5d35c669597bb41ad17597a16cd8ef4d747facd93b22848aa177abe967e5152e460c7695e4d0eb62fcf6e6d4d584ebfc6afdaf1256fcf1890febaa87cf4dcea8a4558b5eee9d81a11398e19880d9ee6d594d8a0eb18b5d0d7c67e2ffdb57985ad23fd487f7d60668988384e701d9b887851f542cf4bb5ca871394e8bad3bc5a20d2c7739297fee5b1dfd604d14bbf431c4f44ac76e41390fe0f99cb0c22e2a5e5d0af1afb974b202531e438861468f8f545bf3fc1ac52203e44448e5df142cfcce5b19fadd4420e76bb90fefae02df60ba272ca64979714c7d6385e24e22ad9c391965fffd5ad68fb65d5dc118ee3385e5c5df978753fb3cacbdbbdd8eb45faeba5f271cc9326bbd2496b3e821472ac4a617e9fd2b089e3845f711d8e17d5e85061fe5566570429c8ecdad1865ae5c32c6dd5511f40faeba1f2b10dafdcf7d22fac7e61570429e8d81572c9176c8bd60e3fbfaf58d735be503bc74b8ef7af6a595f99f5aebcc0d88ff4d74de5e3182795fbd2bbb35ec7d20429c82c4d4d6c082736c73baf114ed9bead112435da7155b879ab1a1b64b57f75ca8aa7632ddf0430f623fd755af7f392caccd5954f90d99560c3c660d3f9cc2c7a8f2e7cafe6814f3033af26ce55131b9d932b1f66ad543e656f2680b1ff8cc0399f3357f948aa77fc461055b39222225ef03b4c177c41ab9a8e755ccdf1921cee14cdb8b730ba5abcfbda40b44f94a31c2fc5baae2e670e0952d0b1756fdb8b59659fd2bcba1b20fd18fbebaef271ccf2eae96fada4099a95c5c49aeb89a89c391488f5075b2eb0572dd8db4621da7e95dab0a9bc304c44f135d79b9505410a12b91c71e42d74aeacf978b35ec744b323fd7555f9d4c6feda0460f9d88f14625691e3c5f4d8e3b2da11efda4e8e953dfe63abba4844969ecdcdece288c53aae92435de9234ff0bcc4ecb2e00bad5cc131cbbca8aeee068e8db11fe9af93caa776a273e5788f6369ef6efd4a4a20b26e62ef17236d97fad4d66a61d265963fdcbb70e43ba585d7d3633be5f05a66ebd5c2a44f6d8db45e32b1f78bfef0dae5833d2e238e3f69cdc7ab7cb0db85babfeec6feda9a0fb3b595e3cd2e339b066ef3073b7831904feec94eef127d214e908f1f7820d67179f6c44be77d7c8f20a9d9e95d82a4fac33dbd177fd528cf4e1ff8fb5aa1afbc5bf99858f1c4d85f77e9d7e9a415cfa037482f2f01f16220bc462f4d1351b0f1fcd6f577115129f50b8e970aa9d778d1574ced25a2d6f577859b2f2022a334ed0f75796b9accae780745bdcac7a9ad02b9a87c90fefaaa7cc4e5c1be965785d915d19ff047fa936f3f5c48beecd8d5d9835fe7c5809a387761fcbb923fc6cc9228c7d2e3ffa12636f2626066f89f1cbb9a9bdd9d7cfbe150d336418e781b5eab2a9f5add8fca07e9af9b351ff3e4b1dfcbab52cd8dafbdf421a334dd3a78272fa9a9d1c71a7a6fb2f425db2c3247e74585d96551541d66d866d1d2330dbd37a5461f13a460ebe09dd5c2f886ed4f17e67eee6d239c52f763b70b757f7d0cfc2e5b3ee329069855a94d00349fda1e69fbfd62ea1789de1d822f1c6dbfccb1755e528aa97d46f984a9a5fcdef75d78d12ccf56b223cc2c849b2fb063254152045fb8a16747b530d1bef1f3b9d917abc5a9e5dd2ebb527bac83e1baec579f1a028cfdffff03bf55f12a1faf2f10112fcaa1c6cdfd1ffb869ad8284861ab92262287998168bfacb6a7c79f94024da696aa3d8e8a33b5399fd2ba30fe5d9fdaa6c406bcef049bd5054154457ffcdc1b7e126adcb2fc9d46d7218e23ef913edef7e801e9ff10315b5b5d8573bcb870e47b43d73d1d88f613b9c40bde509d3cf490967d279fdca3c637540b4789c87b200f2ff88848cb1f51e2ebf3c93ddad248f2d043ab96745c410a6ddcf142f6d873ab9f87eedac6ea0d3540fa3fa4f45b9a63eb5e0dc4714253df1fb76ffa4b29d04444e5c537830d9b0439921a79a4e7a2070bc93d7a61d21fead20b93449c2fd84e4472b08388d30b93fe50b75e982cccbdd273d183a991470439126cdc5cce1cf2fa49c7967b9a073fc5f1e2ca434d1c3cd404e9af83caa7e4d52accae340ddc3e70f5b7bd6d5a22d2b2a34a6c5092e39ce013a4a0e88b360ddc26cad1d2e2b0e48f7b3d440a348bfe98b6f886e88f350ddc26fa228214e4049f24c795f8fa4af6f0f22d851306aef866cbfabbbc679938ccfcdf7eed0290fe0f8ea5e7885c4e906c7de99cabbec5f192c3aaf9e4ee6a6182e378666995dc98202aae6331bbc20b7ec91fafe4c6bc536b5e15232b2d95fc11498ef3829fd99aeb5882a854b2a3ccd288dc6afe683ef9b2c3aa44dcbacb1fe188e304895c078f75c09a4f1da4dfc8f262a075c367bb7eef5e222a2dbcbe74ec599fd2564cbfce715c6ae4513110af168e25471e21d7751ddbd0e63bcebf27dc7ca1acb4e4675f6c39e793b1ae6b8bf3af1a5aca752c66ebc99147ec6ac61fe9498d3cea728e3ef58cc8abf9d917133d37859ab6b46dfabc595d983df8353cd2e7b787df6cfc6d65a69eade68f766ebedb7b9b7ceb1bb69165462ed2756da8617329bddf1fe92bccee7679c1b5ab1c27ba2e137d61c7aef2a2d2d87febe2d1ef7baf6d33cf71a2ebdabc20bb8e13edbc522f4c869ab795326fe6a79f17e5a814686a3bf773deff32fbe6d7fcd1be869e1bd1fe487fddcc80cdd2e8ae3feabde49fd5c4c65266383ff382a5676d23db79fe9716c69e94431d72b0cb256694e7aaf9f160c3c6ccd4730dbd3bb4cc217fa44f0eb67124e8e519b334db34f0a733c35f15e598e44f247a6e52e343e5ccc163fbbe34b4fd29410aa29d91feba8cfef37fd232784763dfcda977feddd297bab67c99881cbb3af5cbfbe29dd7f8d456b392e63841f0852bd951b3ba20f9e3b69117038940a4dfb575d7653ea5d9d452d9132ff45cf80fbce09f3fbc532f4eaeb9e001225a9cf8417aecf1c16bbf870e70c6b87086bcf9d4c7b2d3cfbbaecb6c7de2952f2c1cfd616961b85a98745db79c79a79c794bcb8e9e38f875bd38ed7d3e37bbc775dddcec4bccd2722776335b5fb994961d5b9afea9f73af9d6c3b659f65e2f4def3af8f4e568ea3305b3de33a67beb7de5c537625dd798da9c5e9e312692f1eeedd5fcd160e3794b533f36b464db86cfea856392d2649467055189b65f4644d1f6cbf5e2546961bf1cec10fd318e13c875455f78ead5bf314ad38214ac168f1d79f18eb60d7f11edb8a2bc30dcbdf56fd1d4a87ceaf036ea8cfdec936de77e2edc725139738817e4626a9f121f9c79e31f0391b5a5f48178f776d7b17c6a9b5e9a364a3381683f2f06cc7232d173637afc3bd1f62baaf9a3cc2a577263b6917398e1d8d544cff56a7c833fd21b69bda498da37f7cea3e75cbd13bfd88515cf3a1c49f8d6a1cfa4c79e0844fb830d9b8848899da3178f0d6dff4f8e97b4a591f9d1c73acefbaba5e3cf91eb04a27ddad2dbb65950e31b447f8ce7e57c724f53dfad85d4dee673fe2c10e957620385b957e2ddd779d7b6f56c7afcc9d6a13f47f431f6d7afeccc4f178ffec03672822facc687fca16e39bcc61fea16e5182fc8cc2a5bd5057fb897886c23cf6c4d56db89c8d233aec3a44003c7f10e336d3dab97678ce271bd34ad6547995910e56863dfadf1eeed6861a4ff776209a8a8e50e7b0936ca272c3deb1d84765de6fd108bebd81c2f7a7f2ebfe57822e20459f2c7e560a7d773d4d8a070dabf7c01483fc0e9a5ff965b6e412b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000fca6fe07bfbdb4e5f663b6970000002574455874646174653a63726561746500323032332d31302d33305430333a35323a35302b30303a30308391b5a50000002574455874646174653a6d6f6469667900323032332d31302d33305430333a35323a35302b30303a3030f2cc0d190000000049454e44ae426082	2
+4	Libya	\\x89504e470d0a1a0a0000000d49484452000000ff000000800803000000f3a24fec0000000467414d410000b18f0bfc6105000000206348524d00007a26000080840000fa00000080e8000075300000ea6000003a98000017709cba513c0000018c504c5445e700130000003030307a7a7ab5b5b5ddddddf1f1f1ffffffb4b4b47979792f2f2f0404045d5d5dd1d1d1d0d0d05c5c5c3838388383835050503939392222222c2c2c474747666666aeaeaec7c7c7353535747474fbfbfbfdfdfda3a3a32525250909096464645555558f8f8f0b0b0b7272720e0e0e7e7e7e1e1e1e464646a6a6a6020202121212c0c0c00303030d0d0de9e9e9cdcdcd0a0a0a060606787878808080f7f7f71f1f1f161616f3f3f38a8a8a3c3c3c919191404040757575f4f4f4a9a9a90707074444449a9a9acacacaacacac888888a5a5a5d7d7d70f0f0ffcfcfcf8f8f83131313a3a3a202020101010d2d2d26f6f6ffefefe5e5e5eb3b3b3f9f9f9b7b7b70101016a6a6aebebeb171717686868bbbbbbe6e6e6ececec131313fafafa1818185b5b5b080808c9c9c9adadadf6f6f68c8c8c050505eaeaeacecece454545a7a7a77171712424248787873232320c0c0c484848585858272727565656c2c2c2d3d3d3848484525252b1b1b1bababa4e4e4e4d4d4d2d2d2d777777dbdbdbf0f0f0b2b2b2239e46c346398200000001624b474407166188eb0000000774494d4507e7021a1124091721f5440000024a4944415478daeddad95b12511880713f132615d312b012db34db90d0362a5acc4a2db505cad25cdacb36a37d15ed1f8f73e8410cd1ab9e793adffb5e7071e6667e78983967c69a1a222222222222222222222222222222faef13dde1c78f1f3f7efcf8f1e3c78f1f3f7efcf8ff69b51bea02412f18d858dfa0cfdf186af296dbd4dca8cbdff247dfb4794b6b38126ddbba6dbb267f7bcce03b76ec2c8decdabd478fbfb338e96b570c7645edf7a0c0bfd7f2ebbaff1e37b361df7ee7fd07ece43f78a8f248bc30357a128efb0f270dbfb76fb563470a3f8da38efb8f19fef113552f0db156a7fda993c67faacad144e1d218285e1812a7d3671cf49f35fc73f1b56e0de745fa2fa493de808b7fff8bc67f69ed5be3e5c160e173a8cb41fff015030cadb334305d1d71f1f73f6a6d63558e5e0b5d2ff96f3879fd6b36b49bfdab1d8a67b2b796b744b7c79df4df31b6bb95e31393f762651b426f2a25eefaa72bc76732d9d9727ff2be9bfe0776fe3f543bffb55fffbaedfd2fa3f6fe278f8cedb1daf58fb4dbf5ef8cdaf5efc413f3053c5d7ffff32c3ae0e2fe47d276ff3ba675ff2bf1e7e60b9853fbfc435ed885de4badcfbf445e5579fef95a543cff1479537cf731bf62f06dce7c6a78fe2df2cede043a06df9746fada3ef872263ebdff9aff585ce47dfafc65341cc94d7efd36229afc22dfe7ca767bbd3ffc3a0d1fdf7fff5cc8e617bdc5fcd242c4bf93e0ff1ff0e3c78f1f3f7efcf8f1e3c78f1f3f7e05fe5fbac38f1f3f7efcf8f1e3c78f1f3f7efcf8f1e3c78f1f3f7efcf8f1e3c78f1f3f7efcf85de837bafecf05363a16b60000002574455874646174653a63726561746500323032332d30322d32365431373a33363a30392b30303a303027e580db0000002574455874646174653a6d6f6469667900323032332d30322d32365431373a33363a30392b30303a303056b838670000000049454e44ae426082	3
+\.
+
+
+--
+-- Data for Name: languages; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.languages (id, name, form, country_id) FROM stdin;
+1	Arabic	Official	1
+2	Tamazight(Berber)	Official	1
+3	French	Lingua franca	1
+\.
+
+
+--
+-- Data for Name: reset_password_codes; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.reset_password_codes (id, code, user_id, user_email, status, date_created, date_modified) FROM stdin;
+42	2UAPE3Q9SUYR1ZP6M0EHCRFB1M6TV59I	\N	john@example.com	t	2023-12-11 12:53:17.32852	2023-12-11 12:53:17.328525
+43	LI29WFLWN3DD0UVFF2B7S7XLH5GS8LP8	\N	admin@test.com	t	2023-12-12 13:03:59.744585	2023-12-12 13:03:59.74459
+\.
+
+
+--
+-- Data for Name: user_type; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.user_type (id, title) FROM stdin;
+1	Admin
+2	Moderator
+3	Normal
+\.
+
+
+--
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public."user" (id, email, password, status, user_type_id) FROM stdin;
+1	admin@test.com	$pbkdf2-sha256$29000$K4WQck6JkZISgjBmLGXsHQ$Hk8MLoyt9k5NQB0tosNNcUD8DhfaamBeYy084vTJXgQ	t	1
+2	john@example.com	$pbkdf2-sha256$29000$ZiwFgNAaIyTEOOccY0zpPQ$Cnd39xoJpAT0DybJsr.GkuAsYypqw3lgHknq2GSRZTY	t	1
+\.
+
+
+--
+-- Data for Name: reset_password_token; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.reset_password_token (id, user_id, token, date_created) FROM stdin;
+\.
+
+
+--
+-- Data for Name: revoked_tokens; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.revoked_tokens (id, jti, date_created, date_modified) FROM stdin;
+1	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwiaWQiOjEsImV4cCI6MTcwMjA3MDM3MH0.6zZ8aW6TubVCd2A6UJo2kPFslTkX8JmuunMY3TQRWo0	2023-12-08 20:50:14.318138	2023-12-08 20:50:14.318145
+2	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwiaWQiOjEsImV4cCI6MTcwMjA3MDUyNH0.4boyL-AXzPVNd5nTL135lCBN8u05lCVGOby10LptsFc	2023-12-08 20:52:38.078443	2023-12-08 20:52:38.078446
+3	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwiaWQiOjEsImV4cCI6MTcwMjA3MDg2MH0.ifCOkdWtaRAYIZJEx9rmwaUwE2oPhWuUMZb_H5FFRBE	2023-12-08 20:58:07.637068	2023-12-08 20:58:07.637074
+4	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwiaWQiOjEsImV4cCI6MTcwMjA3MDkxMn0.N00y09yTQRKX6sCzqjdzqGa4w60SO5o2UU1RH_hcvnM	2023-12-08 20:59:02.890014	2023-12-08 20:59:02.89002
+5	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwiaWQiOjEsImV4cCI6MTcwMjA3MjU2Mn0.N9ZHO-twfxI93Z5HiWqIZ0i7yJnL5bKqFw79O0qfg4c	2023-12-08 21:26:26.473804	2023-12-08 21:26:26.473808
+6	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwiaWQiOjEsImV4cCI6MTcwMjA3MjYxM30.WYUPIxPK3zHnDC7Wx4acwI2nSLV9fiD9OklXxcCul7k	2023-12-08 21:27:22.002084	2023-12-08 21:27:22.002089
+7	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwiaWQiOjEsImV4cCI6MTcwMjEyMDgxMX0.-9JwMLHI-4tLjYTVPq6pXM_6Du-gzcuqspKxJw3Bb1E	2023-12-09 10:51:26.544946	2023-12-09 10:51:26.54495
+8	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwiaWQiOjEsImV4cCI6MTcwMjEyMDkxNn0.CimLTITqTGI7TRjAnqSrAmJ_HsaTwT6A5mdoHmvN_ew	2023-12-09 10:51:44.18242	2023-12-09 10:51:44.182424
+9	eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImpvaG5AZXhhbXBsZS5jb20iLCJpZCI6MiwiZXhwIjoxNzAyMzAwODAyfQ.NZNjc78ALxjfTujX7Jr6-AJcVJPhhX5iiMKIdhz3Lts	2023-12-11 12:52:52.693175	2023-12-11 12:52:52.69318
+\.
+
+
+--
+-- Data for Name: timezones; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.timezones (id, name, country_id) FROM stdin;
+1	UTC +1	1
+\.
+
+
+--
+-- Data for Name: transports; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.transports (id, name, country_id) FROM stdin;
+1	Railways	1
+2	Metro	1
+3	Tramways	1
+4	Highways	1
+5	Cable transport	1
+6	Pipelines	1
+7	Ports and harbors	1
+8	Merchant marine	1
+\.
+
+
+--
+-- Data for Name: user_info; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY public.user_info (id, user_id, first_name, middle_name, last_name) FROM stdin;
+1	1	Oliver	A.	Queen
+2	2	\N	\N	\N
+\.
+
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.cities_id_seq', 19, true);
+
+
+--
+-- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.countries_id_seq', 57, true);
+
+
+--
+-- Name: currencies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.currencies_id_seq', 4, true);
+
+
+--
+-- Name: flags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.flags_id_seq', 4, true);
+
+
+--
+-- Name: languages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.languages_id_seq', 4, true);
+
+
+--
+-- Name: provinces_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.provinces_id_seq', 152, true);
+
+
+--
+-- Name: regions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.regions_id_seq', 7, true);
+
+
+--
+-- Name: reset_password_codes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.reset_password_codes_id_seq', 43, true);
+
+
+--
+-- Name: reset_password_token_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.reset_password_token_id_seq', 1, false);
+
+
+--
+-- Name: revoked_tokens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.revoked_tokens_id_seq', 9, true);
+
+
+--
+-- Name: timezones_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.timezones_id_seq', 2, true);
+
+
+--
+-- Name: transports_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.transports_id_seq', 9, true);
+
+
+--
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.user_id_seq', 2, true);
+
+
+--
+-- Name: user_info_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.user_info_id_seq', 2, true);
+
+
+--
+-- Name: user_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('public.user_type_id_seq', 3, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
