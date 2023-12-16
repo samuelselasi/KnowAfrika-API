@@ -1,6 +1,6 @@
 # Routers
 
-ach of the directories contain Python
+Each of the directories contain Python
 Modules that handles a specific 
 aspect of the endpoints.
 
