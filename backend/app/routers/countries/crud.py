@@ -18,6 +18,12 @@ def get_country(db: Session, country_id: int):
     return db.query(models.Country).filter(models.Country.id ==
                                            country_id).first()
 
+def get_country_by_name(db: Session, country_name: str):
+    """Function to return a specific country based on its name"""
+
+    return db.query(models.Country).filter(
+            models.Country.name.ilike(f'%{country_name}%')).first()
+
 
 def create_region_country(db: Session, country: schemas.CountryCreate,
                           region_id: int):

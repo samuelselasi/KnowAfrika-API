@@ -35,6 +35,18 @@ async def read_flag_by_country(country_id: int,
     raise HTTPException(status_code=404, detail="Flag not found")
 
 
+@router.get("/get_flag_by_name", response_model=List[schemas.Flag])
+async def read_flag_by_name(country_name: str,
+                            db: Session = Depends(get_db)):
+    """Endpoint to read flag based on country name"""
+
+    flag = crud.get_flag_by_country_name(db, country_name=country_name)
+    if flag:
+        return StreamingResponse(io.BytesIO(flag.content),
+                                 media_type="image/png")
+    raise HTTPException(status_code=404, detail="Flag not found")
+
+
 @router.get("/flag/{flag_id}", response_model=schemas.Flag)
 async def read_flag(flag_id: int, db: Session = Depends(get_db)):
     """Endpoint to read flag based on its id"""

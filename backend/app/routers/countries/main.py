@@ -41,6 +41,16 @@ async def read_country(country_id: int, db: Session = Depends(get_db)):
     return db_country
 
 
+@router.get("/get_country_by_name", response_model=schemas.Country)
+async def read_country_by_name(country_name: str, db: Session = Depends(get_db)):
+    """Endpoint to read country based on its name"""
+
+    db_country = crud.get_country_by_name(db, country_name=country_name)
+    if db_country is None:
+        raise HTTPException(status_code=404, detail="Country not found")
+    return db_country
+
+
 @router.post("/create_country/{region_id}", response_model=schemas.Country)
 async def create_country_for_region(region_id: int,
                                     country: schemas.CountryCreate,
