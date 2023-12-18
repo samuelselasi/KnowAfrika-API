@@ -19,6 +19,13 @@ def get_flag_by_country(db: Session, country_id: int):
                                         country_id).first()
 
 
+def get_flag_by_country_name(db: Session, country_name: str):
+    """Function to get flag based on country name"""
+
+    return db.query(models.Flag).filter(
+            models.Flag.title.ilike(f'%{country_name}%')).first()
+
+
 def create_flag(db: Session, flag: schemas.FlagCreate, country_id: int):
     """Function to create flag for a country"""
 
