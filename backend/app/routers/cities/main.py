@@ -21,6 +21,16 @@ def get_db():
         db.close()
 
 
+@router.get("/get_city/{city_id}", response_model=schemas.City)
+async def read_city(city_id: int, db: Session = Depends(get_db)):
+    """Endpoint to get a city based on its id"""
+
+    db_city = crud.get_city(db, city_id=city_id)
+    if db_city is None:
+        raise HTTPException(status_code=404, detail="City not found")
+    return db_city
+
+
 @router.get("/get_cities_country", response_model=List[schemas.City])
 async def read_cities_by_country(country_id: int, skip: int = 0,
                                  limit: int = 100,
@@ -33,6 +43,18 @@ async def read_cities_by_country(country_id: int, skip: int = 0,
 
 
 @router.get("/get_cities_province", response_model=List[schemas.City])
+async def read_cities_by_province(province_id: int,
+                                  skip: int = 0, limit: int = 100,
+                                  db: Session = Depends(get_db)):
+    """Endpoint to get cities based on country id & province id"""
+
+    cities = crud.get_cities_by_province(db,
+                                         province_id=province_id,
+                                         skip=skip, limit=limit)
+    return cities
+
+
+@router.get("/get_cities_country_province", response_model=List[schemas.City])
 async def read_cities_by_country_and_province(country_id: int,
                                               province_id: int,
                                               skip: int = 0, limit: int = 100,
@@ -46,11 +68,11 @@ async def read_cities_by_country_and_province(country_id: int,
     return cities
 
 
-@router.get("/get_city/{city_id}", response_model=schemas.City)
-async def read_city(city_id: int, db: Session = Depends(get_db)):
-    """Endpoint to get a city based on its id"""
+@router.get("/get_city_by_name", response_model=schemas.City)
+async def read_city_by_name(city_name: str, db: Session = Depends(get_db)):
+    """Endpoint to read city based on its name"""
 
-    db_city = crud.get_city(db, city_id=city_id)
+    db_city = crud.get_city_by_name(db, city_name=city_name)
     if db_city is None:
         raise HTTPException(status_code=404, detail="City not found")
     return db_city

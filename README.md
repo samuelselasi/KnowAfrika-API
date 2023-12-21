@@ -60,8 +60,9 @@ detailed information on installation and environment requirements
 | Flags | Router containing endpoints with CRUD functions on `falgs` of African countries  | [Flags](./backend/app/routers/flags) |
 | Currencies | Router containing endpoints with CRUD functions on `currencies` of African countries | [Currencies](./backend/app/routers/currencies) |
 | Languages | Router containing endpoints with CRUD functions on `languages` of African countries | [Languages](./backend/app/routers/languages) |
-| Time-zones | Router containing endpoints with CRUD functions on time-zones of African countries | [Time-zones](./backend/app/routers/timezones) |
-| Transport | Router containing endpoints with CRUD functions on transportation modes of African countries | [Transportation](./backend/app/routers/transport) |
+| Time-zones | Router containing endpoints with CRUD functions on `time-zones` of African countries | [Time-zones](./backend/app/routers/timezones) |
+| Transport | Router containing endpoints with CRUD functions on `transportation` modes of African countries | [Transportation](./backend/app/routers/transport) |
+| Constitutions | Router containing endpoints with CRUD functions on `constitutions` of African countries | [Constitutions](./backend/app/routers/constitutions) |
 
 
 ## Contributing

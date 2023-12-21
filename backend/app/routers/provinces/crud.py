@@ -22,6 +22,13 @@ def get_provinces_by_country(db: Session, country_id: int, skip: int = 0,
                                                     limit).all()
 
 
+def get_province_by_name(db: Session, province_name: str):
+    """Function to return a specific province based on its name"""
+
+    return db.query(models.Province).filter(
+            models.Province.name.ilike(f'%{province_name}%')).first()
+
+
 def create_province(db: Session, province: schemas.ProvinceCreate,
                     country_id: int):
     """Function to create province for a country"""
