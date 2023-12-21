@@ -45,6 +45,17 @@ async def read_province(province_id: int, db: Session = Depends(get_db)):
     return db_province
 
 
+@router.get("/get_province_by_name", response_model=schemas.Province)
+async def read_province_by_name(
+        province_name: str, db: Session = Depends(get_db)):
+    """Endpoint to read province based on its name"""
+
+    db_province = crud.get_province_by_name(db, province_name=province_name)
+    if db_province is None:
+        raise HTTPException(status_code=404, detail="Province not found")
+    return db_province
+
+
 @router.post("/create_province/{country_id}", response_model=schemas.Province)
 async def create_province_for_country(country_id: int,
                                       province: schemas.ProvinceCreate,
