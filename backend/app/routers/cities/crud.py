@@ -34,6 +34,22 @@ def get_cities_by_country_and_province(db: Session, country_id: int,
                                                 limit).all()
 
 
+def get_cities_by_province(db: Session, province_id: int, skip: int = 0,
+                           limit: int = 100):
+    """Function that prints cities by province_id"""
+
+    return db.query(models.City).filter(models.City.province_id ==
+                                        province_id).offset(skip).limit(
+                                                limit).all()
+
+
+def get_city_by_name(db: Session, city_name: str):
+    """Function to return a specific city based on its name"""
+
+    return db.query(models.City).filter(
+            models.City.name.ilike(f'%{city_name}%')).first()
+
+
 def create_city(db: Session, city: schemas.CityCreate,
                 country_id: int, province_id: int):
     """Function that creates a city based on a country and province"""
