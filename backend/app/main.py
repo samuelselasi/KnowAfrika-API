@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """Module to initialize routers and endpoints"""
 
-from fastapi import FastAPI
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI, Request
+from fastapi.templating import Jinja2Templates
 from app.routers.auth import main as auth
 from app.routers.user import main as user
 from app.routers.regions import main as regions
@@ -16,6 +19,13 @@ from app.routers.transport import main as transport
 from app.routers.timezones import main as timezones
 
 app = FastAPI(debug=True)
+app.mount("/templates",
+          StaticFiles(directory="../frontend/web_static"),
+          name="templates")
+
+# templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(
+        directory=str(Path(__file__).parent / "templates"))
 
 app.include_router(auth.router, tags=["Authentication"])
 app.include_router(user.router, tags=["Users"])
@@ -36,3 +46,19 @@ async def root():
     """Function that returns a default message when the root url is hit"""
 
     return {"message": "Welcome to KnowAfrika API. Hit /docs for swagger"}
+
+
+@app.get("/landing_page")
+def landing_page(request: Request):
+    """Function that uses the templates instance to render landing page"""
+
+    return templates.TemplateResponse("landing_page.html",
+                                      {"request": request})
+
+
+@app.get("/technical_documentation")
+def technical_documentation(request: Request):
+    """Function that uses the templates instance to render tech-doc page"""
+
+    return templates.TemplateResponse("tech_doc.html",
+                                      {"request": request})
