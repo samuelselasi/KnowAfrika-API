@@ -31,6 +31,12 @@ to create email templates for situations
 such as password reset, request for api-
 keys or any future emails.
 
+4. [Templates](./templates) -> Contains static
+files for landing and technical documentation pages.
+This is mostly HTML and css and uses Jinja2 to
+render these pages on the server with specified
+endpoint routes in the main file.
+
 
 ## Files
 
