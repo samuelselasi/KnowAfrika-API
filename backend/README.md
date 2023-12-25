@@ -5,6 +5,7 @@
 * [About](#about)
 * [Environment](#environment)
 * [App](#app)
+* [Db](#db)
 
 ## About
 
@@ -128,3 +129,13 @@ Run the application locally with:
 ```
 uvicorn app.main:app --reload
 ```
+
+## Db
+
+This directory contains deyailed info on the KNowAfrika database including:
+* `Scripts` - to scrape raw data from wikipedia
+* `dumps` - data dumps of current dataset
+* `sql scripts` - sql scripts to create and manage tables for the database
+* `ERD` - erd diagram of database
+
+See [db](./db) for more details
