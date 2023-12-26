@@ -57,6 +57,7 @@ detailed information on installation and environment requirements
 | Countries | Router containing endpoints with CRUD functions on African `countries` | [Countries](./backend/app/routers/countries) |
 | Provinces | Router containing endpoints with CRUD functions on `provinces` of African countries | [Provinces](./backend/app/routers/provinces) |
 | Cities | Router containing endpoints with CRUD functions on `cities` of provinces in African countries | [Cities](./backend/app/routers/cities) |
+| Attractions | Router containing endpoints with CRUD functions on `attractions` of cities in African countries | [Attractions](./backend/app/routers/attractions) |
 | Flags | Router containing endpoints with CRUD functions on `falgs` of African countries  | [Flags](./backend/app/routers/flags) |
 | Currencies | Router containing endpoints with CRUD functions on `currencies` of African countries | [Currencies](./backend/app/routers/currencies) |
 | Languages | Router containing endpoints with CRUD functions on `languages` of African countries | [Languages](./backend/app/routers/languages) |
