@@ -65,6 +65,7 @@ detailed information on installation and environment requirements
 | Transport | Router containing endpoints with CRUD functions on `transportation` modes of African countries | [Transportation](./backend/app/routers/transport) |
 | Constitutions | Router containing endpoints with CRUD functions on `constitutions` of African countries | [Constitutions](./backend/app/routers/constitutions) |
 | Holidays | Router containing endpoints with CRUD functions on `holidays` of African countries | [Holidays](./backend/app/routers/holidays) |
+| Contacts | Router containing endpoints with CRUD functions on `emergency contacts` of African countries | [Contacts](./backend/app/routers/contacts) |
 
 
 ## Contributing
