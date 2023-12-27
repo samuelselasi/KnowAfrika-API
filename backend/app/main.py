@@ -11,6 +11,7 @@ from app.routers.regions import main as regions
 from app.routers.countries import main as countries
 from app.routers.provinces import main as provinces
 from app.routers.cities import main as cities
+from app.routers.contacts import main as contacts
 from app.routers.currencies import main as currencies
 from app.routers.languages import main as languages
 from app.routers.flags import main as flags
@@ -36,6 +37,7 @@ app.include_router(countries.router, tags=["Countries"])
 app.include_router(provinces.router, tags=["Provinces"])
 app.include_router(cities.router, tags=["Cities"])
 app.include_router(attractions.router, tags=["Tourist Attractions"])
+app.include_router(contacts.router, tags=["Emergency Contacts"])
 app.include_router(currencies.router, tags=["Currencies"])
 app.include_router(languages.router, tags=["Languages"])
 app.include_router(flags.router, tags=["Flags"])
