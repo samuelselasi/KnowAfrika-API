@@ -18,18 +18,6 @@ class CountryCreate(CountryBase):
     pass
 
 
-class Country(CountryBase):
-    """Class that defines instance attributes"""
-
-    id: int
-    region_id: int
-
-    class Config:
-        """Class that configures ORM mode"""
-
-        from_attributes = True
-
-
 class RegionBase(BaseModel):
     """Class that defines instance attributes"""
 
@@ -42,12 +30,10 @@ class RegionCreate(RegionBase):
     name: str
 
 
-class Region(RegionBase):
+class Region_(RegionBase):
     """Class that defines instance attributes"""
 
     id: int
-    is_active: bool
-    countries: List[Country] = []
 
     class Config:
         """Class that configures ORM mode"""
@@ -55,10 +41,24 @@ class Region(RegionBase):
         from_attributes = True
 
 
-class Region_(RegionBase):
+class Country(CountryBase):
     """Class that defines instance attributes"""
 
     id: int
+    region: Region_
+
+    class Config:
+        """Class that configures ORM mode"""
+
+        from_attributes = True
+
+
+class Region(RegionBase):
+    """Class that defines instance attributes"""
+
+    id: int
+    is_active: bool
+    countries: List[Country] = []
 
     class Config:
         """Class that configures ORM mode"""
