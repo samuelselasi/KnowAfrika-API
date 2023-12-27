@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module that defines endpoints for attractions"""
 
+from typing import List
 from sqlalchemy.orm import Session
 from . import crud, models, schemas
 from .database import SessionLocal, engine
@@ -21,7 +22,7 @@ def get_db():
 
 
 @router.get("/get_attraction_by_country/{country_id}",
-            response_model=None)
+            response_model=List[schemas.Tour])
 async def read_attractions_by_country(country_id: int,
                                       skip: int = 0,
                                       limit: int = 100,
@@ -33,9 +34,32 @@ async def read_attractions_by_country(country_id: int,
     return tours
 
 
+@router.get("/get_attractions_by_province/{province_id}",
+            response_model=List[schemas.Tour])
+async def read_attractions_by_province(province_id: int, skip: int = 0,
+                                       limit: int = 100,
+                                       db: Session = Depends(get_db)):
+    """Endpoint to read attractions with province id"""
+
+    tours = crud.get_tours_by_province(db, province_id=province_id,
+                                       skip=skip, limit=limit)
+    return tours
+
+
+@router.get("/get_attractions_by_city/{city_id}",
+            response_model=List[schemas.Tour])
+async def read_attractions_by_city(city_id: int, skip: int = 0,
+                                   limit: int = 100,
+                                   db: Session = Depends(get_db)):
+    """Endpoint to read attractions with city id"""
+
+    a = crud.get_tours_by_city(db, city_id=city_id, skip=skip, limit=limit)
+    return a
+
+
 @router.get(
         "/get_attractions_by_country_and_province/{country_id}/{province_id}",
-        response_model=None)
+        response_model=List[schemas.Tour])
 async def read_attractions_by_country_and_province(
         country_id: int, province_id: int,
         skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
@@ -49,7 +73,7 @@ async def read_attractions_by_country_and_province(
 
 
 @router.get("/get_tours/{country_id}/{province_id}/{city_id}",
-            response_model=None)
+            response_model=List[schemas.Tour])
 async def read_attractions_by_country_province_city(country_id: int,
                                                     province_id: int,
                                                     city_id: int,
@@ -65,7 +89,7 @@ async def read_attractions_by_country_province_city(country_id: int,
     return a
 
 
-@router.get("/read_attraction/{tour_id}", response_model=None)
+@router.get("/read_attraction/{tour_id}", response_model=schemas.Tour)
 async def read_attraction(tour_id: int, db: Session = Depends(get_db)):
     """Endpoint to read attraction based on its id"""
 
@@ -75,7 +99,7 @@ async def read_attraction(tour_id: int, db: Session = Depends(get_db)):
     return db_attraction
 
 
-@router.get("/get_attraction_by_name", response_model=None)
+@router.get("/get_attraction_by_name", response_model=schemas.Tour)
 async def read_attraction_by_name(tour_name: str,
                                   db: Session = Depends(get_db)):
     """Endpoint to read tourist attraction based on its name"""
@@ -87,7 +111,7 @@ async def read_attraction_by_name(tour_name: str,
 
 
 @router.post("/create_attraction/{country_id}/{province_id}/{city_id}",
-             response_model=None)
+             response_model=schemas.Tour)
 async def create_attraction_for_country(country_id: int,
                                         province_id: int, city_id: int,
                                         tour: schemas.TourCreate,
@@ -98,7 +122,7 @@ async def create_attraction_for_country(country_id: int,
                             province_id=province_id, city_id=city_id)
 
 
-@router.put("/update_attraction/{tour_id}", response_model=None)
+@router.put("/update_attraction/{tour_id}", response_model=schemas.Tour)
 async def update_attraction(tour_id: int,
                             tour_update: schemas.TourBase,
                             db: Session = Depends(get_db)):
