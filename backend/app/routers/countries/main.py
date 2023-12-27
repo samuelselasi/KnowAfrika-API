@@ -42,7 +42,8 @@ async def read_country(country_id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/get_country_by_name", response_model=schemas.Country)
-async def read_country_by_name(country_name: str, db: Session = Depends(get_db)):
+async def read_country_by_name(country_name: str,
+                               db: Session = Depends(get_db)):
     """Endpoint to read country based on its name"""
 
     db_country = crud.get_country_by_name(db, country_name=country_name)

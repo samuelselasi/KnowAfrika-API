@@ -42,6 +42,15 @@ def get_tours_by_country_and_province(db: Session,
                                                 skip).limit(limit).all()
 
 
+def get_tours_by_province(db: Session, province_id: int, skip: int = 0,
+                          limit: int = 100):
+    """Function to read attractions based on province id"""
+
+    return db.query(models.Tour).filter(models.Tour.province_id ==
+                                        province_id).offset(
+                                                skip).limit(limit).all()
+
+
 def get_tours_by_country_and_province_and_city(db: Session,
                                                country_id: int,
                                                province_id: int,
@@ -55,6 +64,15 @@ def get_tours_by_country_and_province_and_city(db: Session,
                                         models.Tour.province_id ==
                                         province_id,
                                         models.Tour.city_id ==
+                                        city_id).offset(
+                                                skip).limit(limit).all()
+
+
+def get_tours_by_city(db: Session, city_id: int, skip: int = 0,
+                      limit: int = 100):
+    """Function to read attractions based on city id"""
+
+    return db.query(models.Tour).filter(models.Tour.city_id ==
                                         city_id).offset(
                                                 skip).limit(limit).all()
 

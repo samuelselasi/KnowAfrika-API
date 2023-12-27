@@ -59,7 +59,7 @@ class City(Base):
 
     country = relationship("Country", back_populates="cities")
     province = relationship("Province", back_populates="cities")
-    tours = relationship("Tour", back_populates="cities")
+    tours = relationship("Tour", back_populates="city")
 
 
 class Tour(Base):
@@ -77,4 +77,4 @@ class Tour(Base):
 
     country = relationship("Country", back_populates="tours")
     province = relationship("Province", back_populates="tours")
-    cities = relationship("City", back_populates="tours")
+    city = relationship("City", back_populates="tours")
