@@ -29,3 +29,6 @@ debugging time.
 * [Timezones](./timezones)
 * [Transport](./transport)
 * [Constitutions](./constitutions)
+* [Tourist Attractions](./attractions)
+* [Emergency Contacts](./contacts)
+* [Holidays](./holidays)
