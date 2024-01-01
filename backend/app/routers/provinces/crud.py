@@ -22,6 +22,23 @@ def get_provinces_by_country(db: Session, country_id: int, skip: int = 0,
                                                     limit).all()
 
 
+def get_provinces_by_country_name(db: Session, country_name: str,
+                                  skip: int = 0, limit: int = 100):
+    """Function to return provinces based on country name"""
+
+    country = db.query(models.Country).filter(
+            models.Country.name.ilike(f'%{country_name}%')).first()
+
+    if country:
+        country_id = country.id
+    else:
+        raise HTTPException(status_code=404, detail="Country not found")
+
+    return db.query(models.Province).filter(models.Province.country_id ==
+                                            country_id).offset(skip).limit(
+                                                    limit).all()
+
+
 def get_province_by_name(db: Session, province_name: str):
     """Function to return a specific province based on its name"""
 
