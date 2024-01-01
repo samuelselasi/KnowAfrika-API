@@ -35,6 +35,21 @@ async def read_provinces_by_country(country_id: int,
     return provinces
 
 
+@router.get("/get_provinces_by_country_name",
+            response_model=List[schemas.Province])
+async def read_provinces_by_country_name(country_name: str,
+                                         skip: int = 0,
+                                         limit: int = 100,
+                                         db: Session = Depends(get_db)):
+    """Endpoint to read provinces based on country name"""
+
+    provinces = crud.get_provinces_by_country_name(db,
+                                                   country_name=country_name,
+                                                   skip=skip,
+                                                   limit=limit)
+    return provinces
+
+
 @router.get("/province/{province_id}", response_model=schemas.Province)
 async def read_province(province_id: int, db: Session = Depends(get_db)):
     """Endpoint to read province based on its id"""
