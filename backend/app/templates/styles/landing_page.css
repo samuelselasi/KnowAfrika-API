@@ -78,6 +78,9 @@ body {
 
 h1,
 h2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: 'Raleway', sans-serif;
   font-weight: 1500;
   text-align: center;
@@ -92,12 +95,15 @@ h4 {
 h1 {
   font-size: 14.2rem;
   margin-top: -70px;
-  color: hsla(39,100%,68%,1);
+  color: var(--main-white);
   position: absolute;
 }
 
 h2 {
   font-size: 4.2rem;
+  /* color: var(--main-red); */
+  font-weight: 2800;
+  font-style: bold;
 }
 
 h4 {
@@ -127,8 +133,8 @@ img {
   top: 0;
   left: 0;
   width: 100%;
-  background: var(--main-red);
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+  background: var(--main-gray);
+  box-shadow: 0 2px 0 hsla(11,100%,42.2%,1);
   z-index: 10;
 }
 
@@ -154,7 +160,7 @@ img {
 }
 
 .nav-list a:hover {
-  background: var(--main-blue);
+  background: #e91e1e;
 }
 
 /* Welcome section */
@@ -179,7 +185,7 @@ height: auto;
   font-size: 3rem;
   font-weight: 2800;
   font-style: bold;
-  color: #8BC34A;
+  color: var(--main-red);
   position: absolute;
   margin-top: 148px;
 }
