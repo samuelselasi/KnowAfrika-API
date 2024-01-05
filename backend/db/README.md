@@ -1,6 +1,6 @@
 # Database
 
-![images](https://github.com/samuelselasi/KnowAfrika-API/assets/85158665/52ec6f68-a54b-4e19-ac53-f898809f9335)
+![All-The-Cool-Things-You-Can-Do-With-PostgreSQL-for-Data-Analysis](https://github.com/samuelselasi/KnowAfrika-API/assets/85158665/d61223ab-bd38-451e-ae6d-c8f03c9e8167)
 
 ## Content
 * [About](#about)
