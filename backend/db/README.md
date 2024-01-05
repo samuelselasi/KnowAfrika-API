@@ -5,7 +5,7 @@
 * [Setup](#setup)
 * [Dumps](#dumps)
 * [Scripts](#scripts)
-* [Raw Data](#raw data)
+* [RawData](#rawdata)
 * [Tables](#tables)
 * [Files](#files)
 
