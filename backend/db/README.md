@@ -1,5 +1,7 @@
 # Database
 
+![images](https://github.com/samuelselasi/KnowAfrika-API/assets/85158665/52ec6f68-a54b-4e19-ac53-f898809f9335)
+
 ## Content
 * [About](#about)
 * [Setup](#setup)
