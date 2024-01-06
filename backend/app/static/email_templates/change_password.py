@@ -17,6 +17,7 @@ change = """
         <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; border: 1px solid #cccccc;">
     <tr>
     <td align="center" bgcolor="#007CC7" style="padding: 40px 0 30px 0;">
+
         <img src="https://private-user-images.githubusercontent.com/85158665/291017513-c996a1d4-dea7-45e3-9068-7974aeb065e3.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDQ1NDMyMzQsIm5iZiI6MTcwNDU0MjkzNCwicGF0aCI6Ii84NTE1ODY2NS8yOTEwMTc1MTMtYzk5NmExZDQtZGVhNy00NWUzLTkwNjgtNzk3NGFlYjA2NWUzLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMDYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTA2VDEyMDg1NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM3OTEzMGQ0ODFlNTU1NjliOWRkMDZlNWE4ZWQyNzU2MzBiOTVkZjQyMGVhODRmYjdiY2VkZGMyM2Q4ZThiZGQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.1WIH7q6n-VZwGWnoK_hEC2d88R9EZDz8iz9jInd-j_8" alt="KnowAfrika API logo" style="width:20%;height:0%;">
     </td>
     </tr>

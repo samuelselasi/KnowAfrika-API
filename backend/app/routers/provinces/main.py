@@ -35,11 +35,37 @@ async def read_provinces_by_country(country_id: int,
     return provinces
 
 
+@router.get("/get_provinces_by_country_name",
+            response_model=List[schemas.Province])
+async def read_provinces_by_country_name(country_name: str,
+                                         skip: int = 0,
+                                         limit: int = 100,
+                                         db: Session = Depends(get_db)):
+    """Endpoint to read provinces based on country name"""
+
+    provinces = crud.get_provinces_by_country_name(db,
+                                                   country_name=country_name,
+                                                   skip=skip,
+                                                   limit=limit)
+    return provinces
+
+
 @router.get("/province/{province_id}", response_model=schemas.Province)
 async def read_province(province_id: int, db: Session = Depends(get_db)):
     """Endpoint to read province based on its id"""
 
     db_province = crud.get_province(db, province_id=province_id)
+    if db_province is None:
+        raise HTTPException(status_code=404, detail="Province not found")
+    return db_province
+
+
+@router.get("/get_province_by_name", response_model=schemas.Province)
+async def read_province_by_name(
+        province_name: str, db: Session = Depends(get_db)):
+    """Endpoint to read province based on its name"""
+
+    db_province = crud.get_province_by_name(db, province_name=province_name)
     if db_province is None:
         raise HTTPException(status_code=404, detail="Province not found")
     return db_province

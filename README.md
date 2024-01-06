@@ -53,19 +53,23 @@ detailed information on installation and environment requirements
 | Technical Documentation Page | Page containing technical documentation of API | [Web Static](./frontend/web_static/tech_doc.html) |
 | User Modules | Router containing endpoints with CRUD functions on `User` modules | [Users](./backend/app/routers/user) |
 | Authentication | Router containing endpoints with CRUD functions on user `authentication` | [Authentication](./backend/app/routers/auth) |
-| Regions | Router containing endpoints with CRUD functions on `regions` of Africa | [Users](./backend/app/routers/regions) |
+| Regions | Router containing endpoints with CRUD functions on `regions` of Africa | [Regions](./backend/app/routers/regions) |
 | Countries | Router containing endpoints with CRUD functions on African `countries` | [Countries](./backend/app/routers/countries) |
 | Provinces | Router containing endpoints with CRUD functions on `provinces` of African countries | [Provinces](./backend/app/routers/provinces) |
 | Cities | Router containing endpoints with CRUD functions on `cities` of provinces in African countries | [Cities](./backend/app/routers/cities) |
+| Attractions | Router containing endpoints with CRUD functions on `attractions` of cities in African countries | [Attractions](./backend/app/routers/attractions) |
 | Flags | Router containing endpoints with CRUD functions on `falgs` of African countries  | [Flags](./backend/app/routers/flags) |
 | Currencies | Router containing endpoints with CRUD functions on `currencies` of African countries | [Currencies](./backend/app/routers/currencies) |
 | Languages | Router containing endpoints with CRUD functions on `languages` of African countries | [Languages](./backend/app/routers/languages) |
-| Time-zones | Router containing endpoints with CRUD functions on time-zones of African countries | [Time-zones](./backend/app/routers/timezones) |
-| Transport | Router containing endpoints with CRUD functions on transportation modes of African countries | [Transportation](./backend/app/routers/transport) |
+| Time-zones | Router containing endpoints with CRUD functions on `time-zones` of African countries | [Time-zones](./backend/app/routers/timezones) |
+| Transport | Router containing endpoints with CRUD functions on `transportation` modes of African countries | [Transportation](./backend/app/routers/transport) |
+| Constitutions | Router containing endpoints with CRUD functions on `constitutions` of African countries | [Constitutions](./backend/app/routers/constitutions) |
+| Holidays | Router containing endpoints with CRUD functions on `holidays` of African countries | [Holidays](./backend/app/routers/holidays) |
+| Contacts | Router containing endpoints with CRUD functions on `emergency contacts` of African countries | [Contacts](./backend/app/routers/contacts) |
 
 
 ## Contributing
-##### Main Branch
+* **Main Branch**
 The `main` branch represents the main
 codebase and should always contain stable
 and production-ready code. Developers
@@ -73,21 +77,21 @@ should avoid directly committing
 changes to this branch to maintain
 its integrity.
 
-##### Feature Branches
+* **Feature Branches**
 When working on a new feature, bug fix,
 or improvement, developers create a new
 branch from the "main" branch.
 This branch is often named after the
 feature or issue being addressed.
 
-##### Code Development
+* **Code Development**
 Developers work in their respective feature
 branches to implement and test the
 changes related to their assigned
 tasks. Frequent commits are made to
 track progress.
 
-##### Pull Requests (PRs)
+* **Pull Requests (PRs)**
 Once a feature or bug fix is complete,
 the developer creates a pull request
 from their feature branch to the `master`
@@ -95,26 +99,26 @@ branch. The pull request includes a
 summary of changes, the purpose of the
 code, and any relevant details.
 
-##### Code Review
+* **Code Review**
 Team members or designated reviewers review
 the code changes in the pull request. They
 provide feedback, suggest improvements,
 and ensure code quality and best practices.
 
-##### Continuous Integration (CI)
+* **Continuous Integration (CI)**
 Automated tests and checks are run as part
 of the CI process to verify that the new code
 integrates smoothly with the existing
 codebase and passes all necessary tests.
 
-##### Merging
+* **Merging**
 After the pull request is approved and any
 requested changes are addressed, the code
 is merged into the `master` branch. This
 integration brings the new feature or
 fix into the main codebase.
 
-##### Tagging and Releases
+* **Tagging and Releases**
 Once a set of features or bug fixes is
 merged into the `master` branch, a
 release may be created by tagging the
@@ -122,7 +126,7 @@ commit with a version number. This
 helps track and manage different
 versions of the software.
 
-##### Branch Cleanup
+* **Branch Cleanup**
 After successful merging, feature
 branches are usually deleted to keep
 the repository organised and avoid

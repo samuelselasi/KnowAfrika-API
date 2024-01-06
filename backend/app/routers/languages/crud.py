@@ -4,6 +4,7 @@
 from . import models, schemas
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy import and_
 
 
 def get_language(db: Session, language_id: int):
@@ -20,6 +21,23 @@ def get_languages_by_country(db: Session, country_id: int, skip: int = 0,
     return db.query(models.Language).filter(models.Language.country_id ==
                                             country_id).offset(skip).limit(
                                                     limit).all()
+
+
+def get_language_by_country_and_name(db: Session, country_id: int,
+                                     language_name: str, skip: int = 0,
+                                     limit: int = 100):
+    """Function to get languages based on country id and name"""
+
+    return db.query(models.Language).filter(and_(
+        models.Language.country_id == country_id,
+        models.Language.name.ilike(f'%{language_name}%'))).first()
+
+
+def get_language_by_name(db: Session, language_name: str):
+    """Function to return a specific language based on its name"""
+
+    return db.query(models.Language).filter(
+            models.Language.name.ilike(f'%{language_name}%')).first()
 
 
 def create_language(db: Session, language: schemas.LanguageCreate,
